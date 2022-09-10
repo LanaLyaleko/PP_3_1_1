@@ -10,14 +10,12 @@ import java.util.List;
 
 
 @Repository
-@Transactional
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
     EntityManager entityManager;
 
     @Override
-    @Transactional
     public List<User> getAllUsers() {
         List<User> users = entityManager.createQuery("SELECT u FROM User u",
                 User.class).getResultList();
@@ -25,13 +23,11 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    @Transactional
     public void add(User user) {
         entityManager.persist(user);
     }
 
     @Override
-    @Transactional
     public User findUserById(int id){
         return entityManager.find(User.class, id);
     }
@@ -41,13 +37,11 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    @Transactional
     public void delete(int id) {
         entityManager.remove(entityManager.find(User.class, id));
     }
 
 
-    @Transactional
     @Override
     public User edit(User user) {
         return entityManager.merge(user);

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 public class UserController {
 
-    @Autowired
     private UserService userService;
 
 
@@ -60,6 +59,4 @@ public class UserController {
         userService.delete(id);
         return "redirect:/users";
     }
-
-
 }
