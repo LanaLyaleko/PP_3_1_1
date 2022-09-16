@@ -10,12 +10,11 @@ import java.util.List;
 
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
 
-    private UserDao userDao;
+    private final UserDao userDao;
 
-    public void setUserDAO(UserDao userDao) {
+    public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
     }
 
@@ -37,7 +36,6 @@ public class UserServiceImpl implements UserService {
         userDao.updateUser(user);
     }
 
-
     @Override
     @Transactional
     public void delete(int id) {
@@ -48,7 +46,6 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void edit(User user) {
         userDao.edit(user);
-
     }
 
     @Override
